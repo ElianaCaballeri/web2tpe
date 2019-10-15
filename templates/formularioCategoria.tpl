@@ -15,7 +15,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label>ID</label>
-                            <input name="id_categoria" type="text" class="form-control" value="{$categoria->id_tipo}">
+                            <input name="id_categoria" type="hidden" class="form-control" value="{$categoria->id_tipo}">
                         </div>
                     </div>
                     <div class="col">

@@ -7,7 +7,7 @@
         <input type="text" name="nombre"class="form-control" value="{$producto->nombre}" id="nombre">
       </div>
       <label >ID</label>
-        <input type="text" name="id_producto"class="form-control" value="{$producto->id_producto}" id="id_producto">
+        <input type="hidden" name="id_producto"class="form-control" value="{$producto->id_producto}" id="id_producto">
       </div>
       <div class="form-group">
         <label>Descripción</label>
