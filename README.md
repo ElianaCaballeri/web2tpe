@@ -1,1 +1,2 @@
-# web2tpe
+__usuario:admin__
+__contraseña:admin__
