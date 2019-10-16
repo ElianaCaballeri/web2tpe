@@ -17,11 +17,11 @@ class CategoriaController{
         $this->authHelper= new AuthHelper();
     }
 
-   
     public function mostrarCategorias(){
         $categorias=$this->modelCateg->obtenerCategorias();
         $this->viewCateg->verCategorias($categorias);
     }
+
     public function detalleCateg($params=null){
         $id_categoria=$params[':ID'];
         $productosCategoria=$this->modelProd->obtenerProductosCategoria($id_categoria);
@@ -29,9 +29,10 @@ class CategoriaController{
        //var_dump($categoria);
         $this->viewCateg->mostrarProductosCateg($productosCategoria, $categoria);
     }
+
     public function insertarCateg(){
-         //barrera
-         $this->authHelper->verificarLogin();
+        //barrera
+        $this->authHelper->verificarLogin();
 
         $nombre=$_POST['nombre'];
         $descripcion=$_POST['descripcion'];
@@ -49,8 +50,8 @@ class CategoriaController{
     }
 
     public function modificarCateg(){
-         //barrera
-         $this->authHelper->verificarLogin();
+        //barrera
+        $this->authHelper->verificarLogin();
       
         $id_categoria=$_POST['id_categoria'];
         $nombre=$_POST['nombre'];
@@ -60,8 +61,8 @@ class CategoriaController{
     }
 
     public function borrarCategoria($params=null){
-         //barrera
-         $this->authHelper->verificarLogin();
+        //barrera
+        $this->authHelper->verificarLogin();
         $id_categoria=$params[':ID'];
         $productos=$this->modelProd->obtenerProductosCategoria($id_categoria);
         if(!empty($productos)){

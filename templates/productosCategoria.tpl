@@ -5,7 +5,4 @@
         <li>{$producto->nombre}</li>   
     {/foreach}
 </ul>
-
-
-
 {include 'templates/footer.tpl'}

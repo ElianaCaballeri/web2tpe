@@ -25,7 +25,6 @@ class ProductoView{
     public function verDetalleProducto($detalleProducto){
         $this->smarty->assign('titulo', "Detalle del producto");
         $this->smarty->assign('producto',  $detalleProducto);
-    
         $this->smarty->display('templates/detalleProducto.tpl');
     }
     public function mostrarFormProd($producto , $categorias){
