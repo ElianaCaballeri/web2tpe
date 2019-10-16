@@ -26,7 +26,7 @@ class  LoginController{
       
         if(!empty($usuario) && password_verify($clave, $usuario->password)){
             $this->help->loguear($usuario);
-            header('Location: categorias'     );
+            header('Location: categorias');
         }
         else{
             $this->view->mostrarLogin("Login incorrecto. Ingrese los datos nuevamente");
@@ -34,7 +34,7 @@ class  LoginController{
     }
     public function cerrarSesion(){
         $this->help->desloguear();
-        header("Location: login");
+        header("Location: salir");
     }
 
 

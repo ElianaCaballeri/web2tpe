@@ -1,4 +1,4 @@
-    <?php
+<?php
     require_once('controllers/fijo.controller.php');
     require_once('controllers/categoria.controller.php');
     require_once('Router.php');
