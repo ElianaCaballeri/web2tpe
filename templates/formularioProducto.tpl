@@ -1,7 +1,7 @@
 {include 'templates/header.tpl'}
  {if isset($nombreUsuario)}
     <h1>{$titulo}</h1>
-    <form  class="formularioEnvio" action= "editarProducto" method="POST">
+    <form  class="formulario" action= "editarProducto" method="POST">
       <div class="form-group">
         <label >Nombre</label>
         <input type="text" name="nombre"class="form-control" value="{$producto->nombre}" id="nombre">

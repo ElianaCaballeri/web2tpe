@@ -3,7 +3,9 @@
   <ul>
     {foreach from=$productos item=producto}
       <li>
-        <a href="detalleProducto/{$producto->id_producto}">{$producto->nombre}</a>
+    
+        <a href="detalleProducto/{$producto->id_producto}">{$producto->nombre}</a> ({$producto->categoria})
+
           {if isset($nombreUsuario)}
             <a href="editarProducto/{$producto->id_producto}" name="editar">Editar</a>
             <a href="eliminarProducto/{$producto->id_producto}" name="borrar">Borrar</a>
