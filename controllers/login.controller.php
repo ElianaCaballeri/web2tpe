@@ -29,7 +29,7 @@ class  LoginController{
             header('Location: categorias'     );
         }
         else{
-            $this->view->mostrarLogin("Login incorrecto.");
+            $this->view->mostrarLogin("Login incorrecto. Ingrese los datos nuevamente");
         }
     }
     public function cerrarSesion(){

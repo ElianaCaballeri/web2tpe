@@ -12,10 +12,10 @@
     </div>
     {if $error}
       <div class="alert alert-danger" role="alert">
-        {$error} Ingrese los datos nuevamente
+        {$error}
       </div>
     {/if}
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Ingresar</button>
   </form>
 {include 'templates/footer.tpl'}

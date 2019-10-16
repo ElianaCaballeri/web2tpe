@@ -36,10 +36,4 @@ class modelCategoria {
         $query->execute([$id_categoria]);
 
     }
-
-
-
-
-
-
 }
