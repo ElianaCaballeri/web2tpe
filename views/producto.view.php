@@ -35,7 +35,8 @@ class ProductoView{
         $this->smarty->display('templates/formularioProducto.tpl');
     }
 
-    public function mensaje($mensaje){
+    public function mostrarMensaje($mensaje){
+        $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->display('templates/mensajes.tpl');
     }
 

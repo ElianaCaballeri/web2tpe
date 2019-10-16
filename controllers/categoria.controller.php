@@ -67,7 +67,7 @@ class CategoriaController{
         if(!empty($productos)){
             //var_dump($productos);
         
-            echo("Para eliminar la categoria debe borrar los productos que pertenecen a ella");
+            $this->viewCateg->mostrarMensaje("Para eliminar la categoria debe borrar los productos que pertenecen a ella");
         }
         else{
             $this->modelCateg->eliminarCateg($id_categoria);

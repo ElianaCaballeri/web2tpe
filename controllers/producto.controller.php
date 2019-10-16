@@ -44,7 +44,7 @@ class ProductoController{
             header("Location: " . PRODUCTOS);
         }
         else{
-            $this->viewProd->mensaje("Existen campo/s sin completar.");
+            $this->viewProd->mostrarMensaje("Existen campo/s sin completar.");
         }
     }
 

@@ -38,4 +38,8 @@ class CategoriaView{
         
         $this->smarty->display('templates/formularioCategoria.tpl');
     }
+    public function mostrarMensaje($mensaje){
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->display('templates/mensajes.tpl');
+    }
 }
