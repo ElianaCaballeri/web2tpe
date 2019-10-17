@@ -1,6 +1,7 @@
 <?php
-    include_once('views/fijo.view.php');
-    include_once('helpers/auth.helper.php');
+
+include_once('views/fijo.view.php');
+include_once('helpers/auth.helper.php');
 
 class FijoController{
 
@@ -13,4 +14,5 @@ class FijoController{
     public function mostrarHome(){
         $this->viewFijo->mostrarInicio();   
     }
+
 }

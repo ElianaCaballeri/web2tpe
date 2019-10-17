@@ -1,4 +1,5 @@
 <?php
+
 require_once('libs/Smarty.class.php');
 
 class LoginView{
@@ -9,9 +10,10 @@ class LoginView{
         $this->smarty->assign('basehref', BASE_URL);
     }
 
-public function mostrarLogin($error=null){
-    $this->smarty->assign('titulo', "Iniciar Sesion");
-    $this->smarty->assign('error', $error );
-    $this->smarty->display('templates/iniciarSesion.tpl');
-}
+    public function mostrarLogin($error = null){
+        $this->smarty->assign('titulo', "Iniciar Sesion");
+        $this->smarty->assign('error', $error);
+        $this->smarty->display('templates/iniciarSesion.tpl');
+    }
+    
 }

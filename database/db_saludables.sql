@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2019 a las 23:01:28
+-- Tiempo de generación: 17-10-2019 a las 11:37:38
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -42,10 +42,15 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `stock`, `id_tipo_fk`) VALUES
-(1, 'cafe', 'sabor intenso', '180', 100, 3),
-(2, 'yerba', 'despalada', '200', 200, 3),
-(3, 'mix de semillas', 'chia, sésamo, amaranto, amapola', '50', 100, 1),
-(4, 'Sucralosa', 'endulzante dietetico de bajas calorías, derivado de la sacarosa (azúcar)', '80', 100, 2);
+(9, 'Sucralosa', 'edulcorante diet', '2000', 100, 2),
+(10, 'Stevia', 'educorante diet', '250', 80, 2),
+(11, 'Mascabo', 'azúcar orgánico', '100', 75, 2),
+(12, 'Semillas', 'chia, sésamo, amapola, girasol.', '300', 20, 1),
+(13, 'Frutos Secos', 'nueces, almendras, pistachos, manies.', '600', 30, 1),
+(14, 'Aceite de coco', 'natural y organico', '500', 10, 1),
+(15, 'Te', 'mix de sabores', '100', 40, 3),
+(16, 'Cafe Soluble', 'instantáneo', '180', 25, 3),
+(17, 'Yerba', 'orgánica con palo', '200', 50, 3);
 
 -- --------------------------------------------------------
 
@@ -64,9 +69,9 @@ CREATE TABLE `tipo` (
 --
 
 INSERT INTO `tipo` (`id_tipo`, `nombre`, `descripcion`) VALUES
-(1, 'grasas saludables', 'Son las grasas instauradas, que se encuentran en alimentos de origen vegetal'),
+(1, 'Grasas saludables', 'Son grasas insaturadas de origen vegetal.'),
 (2, 'Endulzantes', 'Son sustancias tanto naturales como artificiales que sirven para dulcificar los alimentos y bebidas.'),
-(3, 'Infusiones', 'Es una bebida obtenida de hierbas y plantas.');
+(3, 'Infusiones', 'Bebidas obtenidas a partir de hierbas y plantas.');
 
 -- --------------------------------------------------------
 
@@ -79,6 +84,13 @@ CREATE TABLE `usuario` (
   `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `username`, `password`) VALUES
+(1, 'admin', '$2y$10$T5NzaukUvzhpl8B8RvsV2eZ0sKFtQVDraWmc3g.7oI2SjUPzuQw7u');
 
 --
 -- Índices para tablas volcadas
@@ -111,7 +123,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`
@@ -123,7 +135,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

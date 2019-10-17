@@ -1,6 +1,5 @@
 *{
     font-family:"Segoe UI","Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-
 }
 .imagenPortada{
     width:100%; 
@@ -8,7 +7,6 @@
 .portada{
     width: auto;
 }
-
 .contenido{
     width: 30%;
     height: auto;

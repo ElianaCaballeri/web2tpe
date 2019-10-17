@@ -1,4 +1,5 @@
 <?php
+
 include_once('models/producto.model.php');
 include_once('models/categoria.model.php');
 include_once('views/producto.view.php');
@@ -27,7 +28,7 @@ class ProductoController{
         $id_producto=$params[':ID'];
         $detalleProducto= $this->modelProd->detalleProducto($id_producto);
          $this->viewProd->verDetalleProducto( $detalleProducto);
-     }
+    }
 
     public function insertarProd(){
         // barrera para visitantes
@@ -44,12 +45,14 @@ class ProductoController{
             header("Location: " . PRODUCTOS);
         }
         else{
-            $this->viewProd->mostrarMensaje("Existen campo/s sin completar.");
+            $this->viewProd->mensaje("Existen campo/s sin completar.");
         }
+        
     }
 
     public function obtenerProductoAmodif($params=null){
         $this->authHelper->verificarLogin();
+        
         $id_producto=$params[':ID'];
         $producto=$this->modelProd->detalleProducto($id_producto);
         $categorias=$this->modelCateg->obtenerCategorias();
@@ -72,15 +75,11 @@ class ProductoController{
         }
     }
 
-    public function borrarProd($params=null){
+    public function borrarProd($params = null){
         $this->authHelper->verificarLogin();
         $id_producto= $params[':ID'];
         $this->modelProd->eliminarProducto($id_producto);
         header("Location: ". PRODUCTOS);
     }
-    
-
-
-
 
 }

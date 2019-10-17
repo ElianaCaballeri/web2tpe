@@ -1,4 +1,5 @@
 <?php
+
 include_once('models/categoria.model.php');
 include_once('models/producto.model.php');
 include_once('views/categoria.view.php');
@@ -26,10 +27,8 @@ class CategoriaController{
         $id_categoria=$params[':ID'];
         $productosCategoria=$this->modelProd->obtenerProductosCategoria($id_categoria);
         $categoria=$this->modelCateg->obtenerUnaCategoria($id_categoria);
-       //var_dump($categoria);
         $this->viewCateg->mostrarProductosCateg($productosCategoria, $categoria);
     }
-
     public function insertarCateg(){
         //barrera
         $this->authHelper->verificarLogin();
@@ -41,8 +40,8 @@ class CategoriaController{
     }
    
     public function obtenerCategoriaAmodif($params=null){
-         //barrera
-         $this->authHelper->verificarLogin();
+        //barrera
+        $this->authHelper->verificarLogin();
 
         $id_categoria=$params[':ID'];
         $categoria=$this->modelCateg->obtenerUnaCategoria($id_categoria);
@@ -63,11 +62,11 @@ class CategoriaController{
     public function borrarCategoria($params=null){
         //barrera
         $this->authHelper->verificarLogin();
+        
         $id_categoria=$params[':ID'];
         $productos=$this->modelProd->obtenerProductosCategoria($id_categoria);
         if(!empty($productos)){
             //var_dump($productos);
-        
             $this->viewCateg->mostrarMensaje("Para eliminar la categoria debe borrar los productos que pertenecen a ella");
         }
         else{

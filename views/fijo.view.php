@@ -1,4 +1,5 @@
 <?php
+
 require_once('libs/Smarty.class.php');
 
 class FijoView{
@@ -13,4 +14,5 @@ class FijoView{
     public function mostrarInicio(){
         $this ->smarty->display('templates/home.tpl');
     }
+    
 }

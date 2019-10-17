@@ -1,7 +1,9 @@
 <?php
+
 require_once('libs/Smarty.class.php');
 
 class ProductoView{
+
     private $smarty;
 
     public function __construct(){
@@ -14,11 +16,9 @@ class ProductoView{
     }
 
     public function verProductos($productos,$categorias) {
-        // paso las variables a smarty
         $this->smarty->assign('titulo',"Lista de productos");
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('categorias', $categorias);
-        // renderizo smarty
         $this->smarty->display('templates/productos.tpl');
     }
     
@@ -27,6 +27,7 @@ class ProductoView{
         $this->smarty->assign('producto',  $detalleProducto);
         $this->smarty->display('templates/detalleProducto.tpl');
     }
+    
     public function mostrarFormProd($producto , $categorias){
         $this->smarty->assign('titulo', "Modificar el producto");
         $this->smarty->assign('producto',  $producto);
@@ -34,7 +35,7 @@ class ProductoView{
         $this->smarty->display('templates/formularioProducto.tpl');
     }
 
-    public function mostrarMensaje($mensaje){
+    public function mensaje($mensaje){
         $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->display('templates/mensajes.tpl');
     }
