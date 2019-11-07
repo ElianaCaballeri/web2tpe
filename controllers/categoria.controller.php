@@ -12,8 +12,8 @@ class CategoriaController{
     private $authHelper;
 
     public function __construct() {
-        $this->modelProd = new modelProducto();
-        $this->modelCateg= new modelCategoria();
+        $this->modelProd = new ModelProducto();
+        $this->modelCateg= new ModelCategoria();
         $this->viewCateg = new CategoriaView();
         $this->authHelper= new AuthHelper();
     }
