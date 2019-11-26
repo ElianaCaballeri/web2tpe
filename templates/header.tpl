@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Natural food store</title>
 </head>
 <body>
@@ -27,9 +28,19 @@
               <li class="nav-item active col-md-3">
                 <a class="nav-link" id="" href="productos">Productos</a> <span class="sr-only">(current)</span></a>
               </li>
+              {if ($esAdmin)}
+                <li class="nav-item active col-md-3">
+                  <a class="nav-link" id="" href="usuarios">Usuarios</a> <span class="sr-only">(current)</span></a>
+                </li>
+              {/if}
               {if !isset ($nombreUsuario)} 
                 <li class="nav-item active col-md-3">
                   <a class="nav-link" id="" href="login">Iniciar Sesion</a> <span class="sr-only">(current)</span></a>
+                </li>
+              {/if}
+              {if !isset ($nombreUsuario)} 
+                <li class="nav-item active col-md-3">
+                  <a class="nav-link" id="" href="registrarLogin">Registrarse</a> <span class="sr-only">(current)</span></a>
                 </li>
               {/if}
               {if isset ($nombreUsuario)}
@@ -38,6 +49,7 @@
                   <a class="nav-item nav-link" href="salir">Salir</a>
                 </li>
               {/if}
+
             </ul>
           </div>
         </nav>

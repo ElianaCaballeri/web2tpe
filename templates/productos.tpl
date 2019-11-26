@@ -4,7 +4,7 @@
     {foreach from=$productos item=producto}
             <li>
             <a href="detalleProducto/{$producto->id_producto}">{$producto->nombre}</a>({$producto->categoria})
-            {if isset($nombreUsuario)} 
+            {if ($esAdmin)} 
               <a href="editarProducto/{$producto->id_producto}" name="editar">Editar</a>
               <a href="eliminarProducto/{$producto->id_producto}" name="borrar">Borrar</a>
             {/if}
@@ -13,8 +13,8 @@
   </ul>
 
 
-{if isset($nombreUsuario)} 
-  <form  class="formulario"action="nuevoProducto" method="POST">
+{if ($esAdmin)} 
+  <form  class="formulario"action="nuevoProducto" method="POST"  enctype="multipart/form-data">
     <div class="form-group">
       <label >Nombre</label>
       <input type="text" name="nombre"class="form-control" id="nombre">
@@ -39,10 +39,11 @@
       {/foreach}
       </select>
     </div>
+     <div class="form-group">
+      <input type="file" name="imagesToUpload[]" id="imagesToUpload" multiple>
+    </div>
     <button type="submit" class="btn btn-primary" id="insertar">Agregar</button>
   </form>
 {/if}
+
 {include 'templates/footer.tpl'}
-
-
-

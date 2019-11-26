@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2019 a las 11:37:38
+-- Tiempo de generación: 20-11-2019 a las 20:01:23
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -21,6 +21,51 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_saludables`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id_comentario` int(11) NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `puntaje` int(10) NOT NULL,
+  `id_producto_fk` int(11) NOT NULL,
+  `id_usuario_fk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id_comentario`, `descripcion`, `puntaje`, `id_producto_fk`, `id_usuario_fk`) VALUES
+(2, 'sdd', 2, 12, 1),
+(4, 'bla bla bla', 2, 9, 1),
+(5, 'bla bla bla', 2, 9, 1),
+(6, 'bla bla bla', 2, 9, 1),
+(7, 'Prueba', 2, 12, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE `imagen` (
+  `id_imagen` int(11) NOT NULL,
+  `ruta` varchar(100) COLLATE utf16_unicode_ci NOT NULL,
+  `id_producto_fk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `imagen`
+--
+
+INSERT INTO `imagen` (`id_imagen`, `ruta`, `id_producto_fk`) VALUES
+(1, 'imagenes/5dd296d4f3ff5.jpg', 18),
+(2, 'imagenes/5dd42fe16a2ce.jpeg', 18);
 
 -- --------------------------------------------------------
 
@@ -50,7 +95,8 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `stock
 (14, 'Aceite de coco', 'natural y organico', '500', 10, 1),
 (15, 'Te', 'mix de sabores', '100', 40, 3),
 (16, 'Cafe Soluble', 'instantáneo', '180', 25, 3),
-(17, 'Yerba', 'orgánica con palo', '200', 50, 3);
+(17, 'Yerba', 'orgánica con palo', '200', 50, 3),
+(18, 'conImagen', 'jkhkjh', '222', 122, 1);
 
 -- --------------------------------------------------------
 
@@ -97,6 +143,21 @@ INSERT INTO `usuario` (`id_usuario`, `username`, `password`) VALUES
 --
 
 --
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_producto_fk` (`id_producto_fk`),
+  ADD KEY `id_usuario_fk` (`id_usuario_fk`);
+
+--
+-- Indices de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD PRIMARY KEY (`id_imagen`),
+  ADD KEY `id_producto_fk` (`id_producto_fk`);
+
+--
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
@@ -120,10 +181,22 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`
@@ -140,6 +213,19 @@ ALTER TABLE `usuario`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_producto_fk`) REFERENCES `producto` (`id_producto`),
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_usuario_fk`) REFERENCES `usuario` (`id_usuario`);
+
+--
+-- Filtros para la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`id_producto_fk`) REFERENCES `producto` (`id_producto`);
 
 --
 -- Filtros para la tabla `producto`

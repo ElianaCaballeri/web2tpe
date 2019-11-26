@@ -18,6 +18,8 @@ class ModelProducto {
         $query =$this->db->prepare('INSERT INTO producto(nombre,descripcion,precio,stock,id_tipo_fk) VALUES(?,?,?,?,?)');
         $query->execute([$nombre, $descripcion ,$precio, $stock, $categoria]);
         //var_dump($query->errorInfo());
+        //return $query->lastInsertId();
+        return $this->db->lastInsertId();
     }
 
     public function detalleProducto($id_producto){

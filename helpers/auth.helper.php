@@ -11,6 +11,7 @@ class AuthHelper{
          // la sesion ya esta inciada en el constructor
          $_SESSION['ID_USUARIO'] = $usuario->id_usuario;
          $_SESSION['NOMBRE_USUARIO'] = $usuario->username;
+         $_SESSION['ES_ADMIN']= $usuario->esAdmin;
     }
 
     public function desloguear(){
@@ -30,5 +31,11 @@ class AuthHelper{
         else 
             return null;
     }
-    
+
+    public function verificarAdmin(){
+        if (isset($_SESSION['ES_ADMIN']) && ($_SESSION['ES_ADMIN'])==1)
+            return TRUE;
+        else
+            return FALSE;
+    }
 }

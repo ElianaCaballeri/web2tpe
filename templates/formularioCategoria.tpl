@@ -1,5 +1,5 @@
 {include 'templates/header.tpl'}
-{if isset($nombreUsuario)} 
+{if ($esAdmin)} 
     <h1>{$titulo}</h1>
     <div class="container">
         <form action="editarCategoria" method="POST">

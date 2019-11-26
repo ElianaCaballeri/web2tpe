@@ -1,4 +1,5 @@
 {include 'templates/header.tpl'}
+
 <div class="contenidoHome conteiner-fluid">
     <div class="row">
         <div class="col-sm contenido">
@@ -16,6 +17,7 @@
         </div>
     </div>
 </div>
+
 {include 'templates/footer.tpl'}
 
 

@@ -9,13 +9,13 @@ class CategoriaController{
     private $viewCateg;
     private $modelProd;
     private $modelCateg;
-    private $authHelper;
+    private $help;
 
     public function __construct() {
-        $this->modelProd = new modelProducto();
-        $this->modelCateg= new modelCategoria();
+        $this->modelProd = new ModelProducto();
+        $this->modelCateg= new ModelCategoria();
         $this->viewCateg = new CategoriaView();
-        $this->authHelper= new AuthHelper();
+        $this->help= new AuthHelper();
     }
 
     public function mostrarCategorias(){
@@ -30,9 +30,7 @@ class CategoriaController{
         $this->viewCateg->mostrarProductosCateg($productosCategoria, $categoria);
     }
     public function insertarCateg(){
-        //barrera
-        $this->authHelper->verificarLogin();
-
+        $this->help->verificarAdmin();
         $nombre=$_POST['nombre'];
         $descripcion=$_POST['descripcion'];
         $this->modelCateg->agregarCategoria($nombre,$descripcion);
@@ -40,18 +38,14 @@ class CategoriaController{
     }
    
     public function obtenerCategoriaAmodif($params=null){
-        //barrera
-        $this->authHelper->verificarLogin();
-
+        $this->help->verificarAdmin();
         $id_categoria=$params[':ID'];
         $categoria=$this->modelCateg->obtenerUnaCategoria($id_categoria);
         $this->viewCateg->mostrarFormCat($categoria);
     }
 
     public function modificarCateg(){
-        //barrera
-        $this->authHelper->verificarLogin();
-      
+        $this->help->verificarAdmin();
         $id_categoria=$_POST['id_categoria'];
         $nombre=$_POST['nombre'];
         $descripcion=$_POST['descripcion'];
@@ -60,9 +54,7 @@ class CategoriaController{
     }
 
     public function borrarCategoria($params=null){
-        //barrera
-        $this->authHelper->verificarLogin();
-        
+        $this->help->verificarAdmin();        
         $id_categoria=$params[':ID'];
         $productos=$this->modelProd->obtenerProductosCategoria($id_categoria);
         if(!empty($productos)){
@@ -73,12 +65,6 @@ class CategoriaController{
             $this->modelCateg->eliminarCateg($id_categoria);
         header ('Location: ' . CATEGORIAS);
         }
-
     }
-
-
-
-
-
 
 }

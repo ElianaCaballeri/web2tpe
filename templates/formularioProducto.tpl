@@ -1,7 +1,7 @@
 {include 'templates/header.tpl'}
-{if isset($nombreUsuario)} 
+{if ($esAdmin)} 
   <h1>{$titulo}</h1>
-  <form  class="formularioEnvio" action= "editarProducto" method="POST">
+  <form  class="formulario" action= "editarProducto" method="POST" enctype="multipart/form-data">
     <div class="form-group">
       <label >Nombre</label>
       <input type="text" name="nombre"class="form-control" value="{$producto->nombre}" id="nombre">
@@ -28,6 +28,15 @@
         <option value="{$categoria->id_tipo}" {if ($categoria->id_tipo == $producto->id_tipo_fk)} selected {/if}>{$categoria->nombre}</option>
       {/foreach}
       </select>
+    </div>
+    <select name="imagen"class="form-control" id="imagen">
+      {foreach from=$imagenes item=imagen}
+        <option value="{$imagen->id_imagen}">{$imagen->ruta}</option>
+      {/foreach}
+      </select>
+    <div class="form-group">
+      <input type="file" name="imagesToUpload[]" id="imagesToUpload" multiple>
+    </div>
     </div>
     <button type="submit"  class="btn btn-primary">Actualizar</button>
     </form>

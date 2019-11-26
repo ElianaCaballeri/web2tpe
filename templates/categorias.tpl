@@ -4,10 +4,8 @@
     <ul>
         {foreach from=$categorias item=categoria}
         <li>
-        
             <a href="detalleCategoria/{$categoria->id_tipo}">{$categoria->nombre}</a>
-            
-            {if isset($nombreUsuario)} 
+            {if ($esAdmin)} 
                 <a href="editarCategoria/{$categoria->id_tipo}">Editar</a>
                 <a href="eliminarCategoria/{$categoria->id_tipo}">Eliminar</a>
             {/if}
@@ -15,7 +13,7 @@
         {/foreach}
     </ul>
 
-    {if isset($nombreUsuario)} 
+    {if ($esAdmin)} 
         <div class="container">
             <form action="nuevaCategoria" method="POST">
                 <div class="row">

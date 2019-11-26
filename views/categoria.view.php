@@ -7,12 +7,14 @@ class CategoriaView{
     private $smarty;
 
     public function __construct(){
-        $authHelper= new AuthHelper();
-        $nombreUsuario= $authHelper->obtenerUsuarioLogueado();
-
         $this->smarty = new Smarty();
         $this->smarty->assign('basehref', BASE_URL);
+        
+        $authHelper= new AuthHelper();
+        $nombreUsuario= $authHelper->obtenerUsuarioLogueado();
         $this->smarty->assign('nombreUsuario', $nombreUsuario);
+        $esAdmin=$authHelper->verificarAdmin();
+        $this->smarty->assign('esAdmin', $esAdmin);
     }
 
     public function verCategorias($categorias){

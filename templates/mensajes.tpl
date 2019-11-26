@@ -1,4 +1,3 @@
 {include 'templates/header.tpl'}
-<h1>ERROR!</h1>
-<h2>{$mensaje}</h2>
+<h3>{$mensaje}</h3>
 {include 'templates/footer.tpl'}
