@@ -6,7 +6,8 @@ let app = new Vue({
     data: {
         titulo: "Lista de Comentarios",
         comentarios: [],
-        esAdmin:0
+        esAdmin:0,
+        promedio:[]
     },
     methods:{
         eliminarComentario: function(event,id_comentario){
@@ -28,15 +29,18 @@ function obtenerComentarios(){
     let esAdmin=document.querySelector("#esAdmin").value;
     fetch('api/comentarios?id_producto='+id)
     .then(response=>response.json())
-    .then(comentarios=>{
-        console.log(comentarios)
-        app.comentarios=comentarios
+    .then(json=>{
+        console.log(json)
+        app.comentarios=json.comentarios
+        app.promedio=json.promedio
         app.esAdmin = esAdmin
+
     })
     .catch(error=>console.log(error))
 }
 
 function agregarComentario (){
+ 
     let comentario={
         "descripcion": document.querySelector("#descripcion").value,
         "puntaje": document.querySelector("#puntaje").value,

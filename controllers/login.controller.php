@@ -37,8 +37,11 @@ class  LoginController{
             }
             else{
                 $hash=password_hash($clave,PASSWORD_DEFAULT);
-                $registrar=$this->model->guardarRegistro($nombre, $hash);
-                $this->view->mensaje("Te has registrado correctamente.");
+                $id_usuario= $this->model->guardarRegistro($nombre, $hash);
+                //var_dump($id_usuario); die();
+                $usuario=$this->model->traerUsuarioPorId($id_usuario);
+                $this->help->loguear($usuario);
+                header("Location: " . CATEGORIAS);
             }
         }
         else{
@@ -72,19 +75,34 @@ class  LoginController{
         $usuarios=$this->model->obtenerUsuarios();
         $this->view->listarUsuarios($usuarios);
     }
-
-    public function modificarPermiso($params=null){
+    public function obtenerPermisoAmodif($params=null){
         $this->help->verificarAdmin();
         $id_usuario=$params[':ID'];
         $usuario=$this->model->traerUsuarioPorId($id_usuario);
-        if (($usuario->esAdmin)==0){
-            $this->model->otorgarPermiso($id_usuario);
-            $this->view->mensaje("El usuario " . $usuario->username . " ahora tiene permiso de administrador");
-        }
-        else{
-            $this->view->mensaje("El usuario " . $usuario->username . " ya tiene permisos de administrador");
+        $this->view->mostrarFormPermiso($usuario);
+    }
+
+    public function modificarPermiso($params=null){
+        $this->help->verificarAdmin();
+        $id_usuario=$_POST['id_usuario'];
+        //var_dump($id_usuario); die();
+        $permiso=$_POST['esAdmin'];
+        //var_dump($permiso); die();
+        if(!empty($permiso));{
+         $this->model->otorgarPermiso($permiso, $id_usuario);
+           
+            header("Location: " . USUARIOS);
         }
     }
+       // $usuario=$this->model->traerUsuarioPorId($id_usuario);
+        // if (($usuario->esAdmin)==0){
+        //     $this->model->otorgarPermiso($id_usuario);
+        //     $this->view->mensaje("El usuario " . $usuario->username . " ahora tiene permiso de administrador");
+        // }
+        // else{
+        //     $this->view->mensaje("El usuario " . $usuario->username . " ya tiene permisos de administrador");
+        // }
+
 
     public function eliminarUsuario($params=null){
         $this->help->verificarAdmin();

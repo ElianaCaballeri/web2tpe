@@ -34,6 +34,7 @@ class UserModel{
     public function guardarRegistro($usuario, $clave){
         $query=$this->db->prepare('INSERT INTO usuario(username, password, esAdmin) VALUES(?,?,0)');
         $query->execute([$usuario, $clave]);
+        return $this->db->lastInsertId();
     }
 
     public function borrarUsuario($id_usuario){
@@ -41,9 +42,10 @@ class UserModel{
         $query->execute([$id_usuario]);
     }
 
-    public function otorgarPermiso($id_usuario){
-        $query=$this->db->prepare('UPDATE usuario SET esAdmin=1 WHERE id_usuario=?');
-        $query->execute([$id_usuario]);
+    public function otorgarPermiso($permiso, $id_usuario){
+        $query=$this->db->prepare('UPDATE usuario SET esAdmin=? WHERE id_usuario=?');
+        $query->execute([$permiso, $id_usuario]);
+       
     }
     
 }

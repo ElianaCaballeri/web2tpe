@@ -40,17 +40,20 @@ class ProductoController{
         } 
         $detalleProducto= $this->modelProd->detalleProducto($id_producto);
         $imagenes= $this->modelImagen->traerImagenesProducto($id_producto);
-        $puntajes=$this->modelComent->obtenerPuntajeProducto($id_producto);
-        $sumaPuntaje=0;
-        $contador=0;
-        $promedioPuntaje=0;
-        foreach ($puntajes as $puntaje){
-            $sumaPuntaje= $sumaPuntaje + $puntaje->puntaje;
-            $contador++;
+        $this->viewProd->verDetalleProducto($detalleProducto,$imagenes,$id_usuario);
+        
+        // $sumaPuntaje=0;
+        // $contador=0;
+        // $promedioPuntaje=0;
+        // foreach ($puntajes as $puntaje){
+        //     $sumaPuntaje= $sumaPuntaje + $puntaje->puntaje;
+        //     $contador++;
+        // }
+        // if($contador>0){
+        // $promedioPuntaje=$sumaPuntaje/$contador;
         }
-        $promedioPuntaje=$sumaPuntaje/$contador;
-        $this->viewProd->verDetalleProducto($detalleProducto,$imagenes,$id_usuario, $promedioPuntaje);
-    }
+       
+    
 
     public function insertarProd(){
         $this->help->verificarAdmin();

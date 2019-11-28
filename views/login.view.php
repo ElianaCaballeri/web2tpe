@@ -34,11 +34,11 @@ class LoginView{
         $this->smarty->display('templates/usuarios.tpl');
     }
     
-    // public function mostrarFormUsuario($id_usuario){
-    //     $this->smarty->assign('titulo', "Modificar permiso:");
-    //     $this->smarty->assign('id_usuario', $id_usuario);
-    //     $this->smarty->display('templates/formularioUsuario.tpl');
-    // }
+    public function mostrarFormPermiso($usuario){
+        $this->smarty->assign('titulo', "Modificar permiso:");
+        $this->smarty->assign('usuario', $usuario);
+        $this->smarty->display('templates/formularioPermiso.tpl');
+    }
 
     public function mensaje($mensaje){
         $this->smarty->assign('mensaje', $mensaje);

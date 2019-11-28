@@ -15,7 +15,7 @@ class ModelComentario{
     }
 
     public function obtenerComentariosProducto($id_producto){
-        $query=$this->db->prepare('SELECT comentario.descripcion, comentario.puntaje, comentario.id_producto_fk, comentario.id_usuario_fk, usuario.username FROM comentario JOIN usuario ON id_usuario_fk=id_usuario WHERE id_producto_fk=?');
+        $query=$this->db->prepare('SELECT comentario.id_comentario, comentario.descripcion, comentario.puntaje, comentario.id_producto_fk, comentario.id_usuario_fk, usuario.username FROM comentario JOIN usuario ON id_usuario_fk=id_usuario WHERE id_producto_fk=?');
         $query->execute([$id_producto]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
@@ -44,8 +44,8 @@ class ModelComentario{
     } 
 
     public function obtenerPuntajeProducto($id_producto){
-        $query=$this->db->prepare('SELECT comentario.puntaje FROM comentario WHERE id_producto_fk=?');
+        $query=$this->db->prepare('SELECT AVG(comentario.puntaje) as promedio FROM comentario WHERE id_producto_fk=?');
         $query->execute([$id_producto]);
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 }

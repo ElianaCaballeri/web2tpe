@@ -24,7 +24,7 @@
 <div id="comentario">
     {include 'templates/vue/listaComentarios.tpl'}
 </div>
-<p> Promedio de Calificacion del Producto: {$promedioPuntaje}</p>
+
 
 {if isset($nombreUsuario)}
 <form class="formulario">

@@ -24,12 +24,11 @@ class ProductoView{
         $this->smarty->display('templates/productos.tpl');
     }
     
-    public function verDetalleProducto($detalleProducto,$imagenes,$id_usuario, $promedioPuntaje){
+    public function verDetalleProducto($detalleProducto,$imagenes,$id_usuario){
         $this->smarty->assign('titulo', "Detalle del producto");
         $this->smarty->assign('producto',  $detalleProducto);
         $this->smarty->assign('imagenes', $imagenes);
         $this->smarty->assign('id_usuario', $id_usuario);
-        $this->smarty->assign('promedioPuntaje', $promedioPuntaje);
         $this->smarty->display('templates/detalleProducto.tpl');
     }
     

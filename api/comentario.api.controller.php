@@ -52,7 +52,10 @@ class ComentarioController{
     public function verComentariosProducto($params=null){
         $id_producto = $_GET['id_producto'];
         $comentarios=$this->modelComent->obtenerComentariosProducto($id_producto);
-        $this->jsonView->response($comentarios, 200);
+        $promedio=$this->modelComent->obtenerPuntajeProducto($id_producto);
+        $json=array('comentarios'=> $comentarios,
+                'promedio'=> $promedio->promedio);
+        $this->jsonView->response($json, 200);
     }
 
     public function eliminarComentario($params=null){

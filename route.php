@@ -21,7 +21,8 @@ $r->addRoute("salir", "GET", "LoginController", "cerrarSesion");
 $r->addRoute("registrarLogin", "GET", "LoginController", "verRegistro");
 $r->addRoute("registrarLogueo", "POST", "LoginController", "registrarse");
 $r->addRoute("usuarios", "GET", "LoginController", "verUsuarios");
-$r->addRoute("editarPermiso/:ID", "GET", "LoginController", "modificarPermiso");
+$r->addRoute("editarPermiso/:ID", "GET", "LoginController", "obtenerPermisoAmodif");
+$r->addRoute("editarPermiso", "POST", "LoginController", "modificarPermiso");
 $r->addRoute("eliminarUsuario/:ID", "GET", "LoginController", "eliminarUsuario");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
