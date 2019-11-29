@@ -42,15 +42,7 @@ class ProductoController{
         $imagenes= $this->modelImagen->traerImagenesProducto($id_producto);
         $this->viewProd->verDetalleProducto($detalleProducto,$imagenes,$id_usuario);
         
-        // $sumaPuntaje=0;
-        // $contador=0;
-        // $promedioPuntaje=0;
-        // foreach ($puntajes as $puntaje){
-        //     $sumaPuntaje= $sumaPuntaje + $puntaje->puntaje;
-        //     $contador++;
-        // }
-        // if($contador>0){
-        // $promedioPuntaje=$sumaPuntaje/$contador;
+      
         }
        
     

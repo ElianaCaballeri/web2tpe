@@ -8,6 +8,14 @@
             <button v-if="esAdmin" type="button" class="btn btn-primary" v-on:click="(event)=>{eliminarComentario(event, comentario.id_comentario)}">Eliminar comentario</button>
         </li> 
     </ul>
+    <div>
+    <select name="ordenar" id="orden">
+        <option value="asc">Ascendente</option>
+        <option value="desc">Descendente</option>
+    </select>
+     <button  type="button" class="btn btn-primary" id="btn-ordenar">Cambiar</button>
+
+    </div>
     <span> El promedio es: {{promedio}}</span>
 </section>
 {/literal}

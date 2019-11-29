@@ -14,17 +14,21 @@ class ModelComentario{
         return $this->db->lastInsertId();
     }
 
-    public function obtenerComentariosProducto($id_producto){
-        $query=$this->db->prepare('SELECT comentario.id_comentario, comentario.descripcion, comentario.puntaje, comentario.id_producto_fk, comentario.id_usuario_fk, usuario.username FROM comentario JOIN usuario ON id_usuario_fk=id_usuario WHERE id_producto_fk=?');
+    public function obtenerComentariosProductoASC($id_producto){
+        $query=$this->db->prepare('SELECT comentario.id_comentario, comentario.descripcion, comentario.puntaje , comentario.id_producto_fk, comentario.id_usuario_fk, usuario.username FROM comentario JOIN usuario ON id_usuario_fk=id_usuario WHERE id_producto_fk=? ORDER BY puntaje ASC');
+        // $query=$this->db->prepare('SELECT comentario.*, usuario.username FROM comentario JOIN usuario ON id_usuario_fk=id_usuario WHERE id_producto_fk=?'); es lo mismo que hacer la linea de arriba
         $query->execute([$id_producto]);
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function obtenerComentariosProductoDESC($id_producto){
+        $query=$this->db->prepare('SELECT comentario.id_comentario, comentario.descripcion, comentario.puntaje , comentario.id_producto_fk, comentario.id_usuario_fk, usuario.username FROM comentario JOIN usuario ON id_usuario_fk=id_usuario WHERE id_producto_fk=? ORDER BY puntaje DESC');
+        // $query=$this->db->prepare('SELECT comentario.*, usuario.username FROM comentario JOIN usuario ON id_usuario_fk=id_usuario WHERE id_producto_fk=?'); es lo mismo que hacer la linea de arriba
+        $query->execute([$id_producto]);
+
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    // public function obtenerComentariosProducto($id_producto){
-    //     $query=$this->db->prepare('SELECT * FROM comentario WHERE id_producto_fk=?');
-    //     $query->execute([$id_producto]);
-    //     return $query->fetchAll(PDO::FETCH_OBJ);
-    // }
 
     public function obtenerComentariosUsuario($id_usuario){
         $query=$this->db->prepare('SELECT * FROM comentario WHERE id_usuario_fk=?');
@@ -43,7 +47,7 @@ class ModelComentario{
         $query->execute([$id_comentario]);
     } 
 
-    public function obtenerPuntajeProducto($id_producto){
+    public function obtenerPromedioProducto($id_producto){
         $query=$this->db->prepare('SELECT AVG(comentario.puntaje) as promedio FROM comentario WHERE id_producto_fk=?');
         $query->execute([$id_producto]);
         return $query->fetch(PDO::FETCH_OBJ);

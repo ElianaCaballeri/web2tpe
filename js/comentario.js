@@ -8,6 +8,7 @@ let app = new Vue({
         comentarios: [],
         esAdmin:0,
         promedio:[]
+        
     },
     methods:{
         eliminarComentario: function(event,id_comentario){
@@ -27,10 +28,11 @@ let app = new Vue({
 function obtenerComentarios(){
     let id=document.querySelector("#id_producto").value;
     let esAdmin=document.querySelector("#esAdmin").value;
-    fetch('api/comentarios?id_producto='+id)
+    let orden= document.querySelector("#orden").value;
+
+    fetch('api/comentarios?id_producto='+id+'&order='+orden)
     .then(response=>response.json())
     .then(json=>{
-        console.log(json)
         app.comentarios=json.comentarios
         app.promedio=json.promedio
         app.esAdmin = esAdmin
@@ -59,6 +61,8 @@ function agregarComentario (){
         //obtenerComentarios();
     });
 }
+let ordenar=document.querySelector("#btn-ordenar");
+ordenar.addEventListener("click", obtenerComentarios)
 
 let agregar=document.querySelector("#btn-agregar");
 if (agregar!=null){

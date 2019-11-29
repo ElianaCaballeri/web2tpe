@@ -51,8 +51,13 @@ class ComentarioController{
 
     public function verComentariosProducto($params=null){
         $id_producto = $_GET['id_producto'];
-        $comentarios=$this->modelComent->obtenerComentariosProducto($id_producto);
-        $promedio=$this->modelComent->obtenerPuntajeProducto($id_producto);
+        if($_GET['order']=="asc"){
+            $comentarios=$this->modelComent->obtenerComentariosProductoASC($id_producto);
+        }
+        else if($_GET['order']=='desc'){
+            $comentarios=$this->modelComent->obtenerComentariosProductoDESC($id_producto);
+        }
+        $promedio=$this->modelComent->obtenerPromedioProducto($id_producto);
         $json=array('comentarios'=> $comentarios,
                 'promedio'=> $promedio->promedio);
         $this->jsonView->response($json, 200);

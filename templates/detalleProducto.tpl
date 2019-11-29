@@ -23,6 +23,7 @@
 
 <div id="comentario">
     {include 'templates/vue/listaComentarios.tpl'}
+    
 </div>
 
 

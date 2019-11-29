@@ -85,23 +85,14 @@ class  LoginController{
     public function modificarPermiso($params=null){
         $this->help->verificarAdmin();
         $id_usuario=$_POST['id_usuario'];
-        //var_dump($id_usuario); die();
         $permiso=$_POST['esAdmin'];
-        //var_dump($permiso); die();
+      
         if(!empty($permiso));{
          $this->model->otorgarPermiso($permiso, $id_usuario);
            
             header("Location: " . USUARIOS);
         }
     }
-       // $usuario=$this->model->traerUsuarioPorId($id_usuario);
-        // if (($usuario->esAdmin)==0){
-        //     $this->model->otorgarPermiso($id_usuario);
-        //     $this->view->mensaje("El usuario " . $usuario->username . " ahora tiene permiso de administrador");
-        // }
-        // else{
-        //     $this->view->mensaje("El usuario " . $usuario->username . " ya tiene permisos de administrador");
-        // }
 
 
     public function eliminarUsuario($params=null){
